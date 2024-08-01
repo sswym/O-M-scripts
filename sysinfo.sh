@@ -118,16 +118,6 @@ get_time(){
     highlight_yellow "IPMI当前时间：$ipmi_now_time"
     echo "----------------------"
 }
-# 检查 lspci 输出
-check_lspci() {
-	lspci | grep -i infiniband
-	if [ $? -eq 0 ]; then
-		highlight_red "IB状态：存在IB，请注意！！！！"
-	else
-		highlight_green "IB状态：不存在IB"
-	fi
-    	echo "----------------------"
-}
 
 main(){
     hyper_threads
@@ -135,7 +125,6 @@ main(){
     check_memory
     check_motherboard
     get_time
-    check_lspci
 }
 
 main
