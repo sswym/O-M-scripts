@@ -1,6 +1,4 @@
 #!/bin/bash
-# 自动添加用户并授予sudo权限脚本
-
 if [ -z "$1" ]; then
     echo "Usage: $0 <username>"
     exit 1
