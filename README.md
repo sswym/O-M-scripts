@@ -2,7 +2,7 @@
 
 该仓库用于储存闲暇时间编写或者整理的shell脚本，方便记忆也提供与大家参考与使用。
 
-由于本人是业余爱好者，编写水平非常差劲，如果脚本存在错误或者bug，希望各位大神提出宝贵的意见或建议。
+由于本人是业余爱好者，编写并不好，如果脚本存在错误或者bug，希望各位大神提出宝贵的意见或建议。
 
 1. [add_user.sh](https://github.com/sswym/O-M-scripts/blob/main/add_user.sh) 该脚本可以自动化完成Linux添加用户并赋予Root权限的功能。
 2. [clear_tmp.sh](https://github.com/sswym/O-M-scripts/blob/main/clear_tmp.sh) 该脚本自动清除临时文件。
