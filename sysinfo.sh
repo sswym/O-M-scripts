@@ -35,7 +35,7 @@ check_cores(){
 check_memory() {
     all_memory=$(free -h | grep "Mem" | awk '{print $2}')
     slots_info=$(sudo dmidecode -t memory )
-    locators=$(echo "$slots_info" | grep "Locator" | grep -v -E  "DIMM\s0|NODE" | awk '{print$2,$3,$4,$5}' | sed 's/Locator://')
+    locators=$(echo "$slots_info" | grep "Locator" | grep -v -E  "DIMM\s0|NODE|Dimm0" | awk '{print$2,$3,$4,$5}' | sed 's/Locator://')
     sizes=$(echo "$slots_info" | grep "^\sSize:" | grep -v Range | awk '{print$2,$3,$4}')
     speeds=$(echo "$slots_info" | grep "^\sSpeed:" | awk '{print$2,$3}')
     types=$(echo "$slots_info" | grep "^\sType:" | awk '{print$2}')
@@ -118,6 +118,16 @@ get_time(){
     highlight_yellow "IPMI当前时间：$ipmi_now_time"
     echo "----------------------"
 }
+# 检查 lspci 输出
+check_lspci() {
+	lspci | grep -i infiniband
+	if [ $? -eq 0 ]; then
+		highlight_red "IB状态：存在IB，请注意！！！！"
+	else
+		highlight_green "IB状态：不存在IB"
+	fi
+    	echo "----------------------"
+}
 
 main(){
     hyper_threads
@@ -125,6 +135,7 @@ main(){
     check_memory
     check_motherboard
     get_time
+    check_lspci
 }
 
 main
